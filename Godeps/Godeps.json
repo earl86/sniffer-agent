@@ -112,11 +112,11 @@
 			"Rev": "d682213848ed68c0a260ca37d6dd5ace8423f5ba"
 		},
 		{
-			"ImportPath": "github.com/zr-hebo/util-db",
+			"ImportPath": "github.com/earl86/util-db",
 			"Rev": "06948bca5665b2d80078f9ff5c015eabb43c54f8"
 		},
 		{
-			"ImportPath": "github.com/zr-hebo/util-http",
+			"ImportPath": "github.com/earl86/util-http",
 			"Comment": "1.0-2-ga096ffc",
 			"Rev": "a096ffc9ada929bb7d920224cad058207d95054b"
 		},
