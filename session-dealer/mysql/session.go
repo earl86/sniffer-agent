@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/earl86/sniffer-agent/communicator"
+	"github.com/earl86/sniffer-agent/model"
 	log "github.com/golang/glog"
 	"github.com/pingcap/tidb/util/hack"
-	"github.com/zr-hebo/sniffer-agent/communicator"
-	"github.com/zr-hebo/sniffer-agent/model"
 )
 
 type MysqlSession struct {

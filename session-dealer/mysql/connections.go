@@ -3,8 +3,8 @@ package mysql
 import (
 	"fmt"
 
+	du "github.com/earl86/util-db"
 	_ "github.com/go-sql-driver/mysql"
-	du "github.com/zr-hebo/util-db"
 )
 
 func expandLocalMysql(port int) (mysqlHost *du.MysqlDB) {

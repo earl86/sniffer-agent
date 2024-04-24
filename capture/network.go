@@ -7,13 +7,13 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/earl86/sniffer-agent/communicator"
+	"github.com/earl86/sniffer-agent/model"
+	sd "github.com/earl86/sniffer-agent/session-dealer"
 	log "github.com/golang/glog"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	pp "github.com/pires/go-proxyproto"
-	"github.com/zr-hebo/sniffer-agent/communicator"
-	"github.com/zr-hebo/sniffer-agent/model"
-	sd "github.com/zr-hebo/sniffer-agent/session-dealer"
 )
 
 var (

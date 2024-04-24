@@ -1,6 +1,6 @@
 package session_dealer
 
-import "github.com/zr-hebo/sniffer-agent/model"
+import "github.com/earl86/sniffer-agent/model"
 
 type ConnSession interface {
 	ReceiveTCPPacket(*model.TCPPacket)

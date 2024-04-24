@@ -4,12 +4,12 @@ import (
 	"flag"
 	"os"
 
+	"github.com/earl86/sniffer-agent/capture"
+	"github.com/earl86/sniffer-agent/communicator"
+	"github.com/earl86/sniffer-agent/exporter"
+	sd "github.com/earl86/sniffer-agent/session-dealer"
+	"github.com/earl86/sniffer-agent/session-dealer/mysql"
 	log "github.com/golang/glog"
-	"github.com/zr-hebo/sniffer-agent/capture"
-	"github.com/zr-hebo/sniffer-agent/communicator"
-	"github.com/zr-hebo/sniffer-agent/exporter"
-	sd "github.com/zr-hebo/sniffer-agent/session-dealer"
-	"github.com/zr-hebo/sniffer-agent/session-dealer/mysql"
 )
 
 var (
