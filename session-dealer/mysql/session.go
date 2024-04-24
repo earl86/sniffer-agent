@@ -298,6 +298,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		default:
 			return
 		}
+
 	}
 
 	if strictMode && mqp != nil && mqp.VisitUser == nil {
@@ -316,7 +317,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 	}
 
 	communicator.ReceiveExecTime(ms.stmtBeginTimeNano)
-	mqp.QuerySQLFinger = processSQL(&mqp.QuerySQL)
+
 	return mqp
 }
 
