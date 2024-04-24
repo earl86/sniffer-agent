@@ -7,7 +7,7 @@ import (
 
 type PooledMysqlQueryPiece struct {
 	MysqlQueryPiece
-	recoverPool     *mysqlQueryPiecePool
+	recoverPool *mysqlQueryPiecePool
 }
 
 func NewPooledMysqlQueryPiece(
@@ -26,7 +26,8 @@ func NewPooledMysqlQueryPiece(
 	pmqp.SyncSend = false
 	pmqp.CapturePacketRate = throwPacketRate
 	pmqp.EventTime = stmtBeginTimeNano / millSecondUnit
-	pmqp.CostTimeInMS = (time.Now().UnixNano() - stmtBeginTimeNano) / millSecondUnit
+	pmqp.CostTimeInUS = (time.Now().UnixNano() - stmtBeginTimeNano) / microSecondUnit
+	//pmqp.CostTimeInMS = (time.Now().UnixNano() - stmtBeginTimeNano) / millSecondUnit
 	pmqp.recoverPool = mqpp
 
 	return
@@ -53,8 +54,8 @@ func (pmqp *PooledMysqlQueryPiece) GenerateJsonBytes() {
 }
 
 type mysqlQueryPiecePool struct {
-	queue  chan *PooledMysqlQueryPiece
-	lock sync.Mutex
+	queue chan *PooledMysqlQueryPiece
+	lock  sync.Mutex
 }
 
 func NewMysqlQueryPiecePool() (mqpp *mysqlQueryPiecePool) {
@@ -63,7 +64,7 @@ func NewMysqlQueryPiecePool() (mqpp *mysqlQueryPiecePool) {
 	}
 }
 
-func (mqpp *mysqlQueryPiecePool) Enqueue(pmqp *PooledMysqlQueryPiece)  {
+func (mqpp *mysqlQueryPiecePool) Enqueue(pmqp *PooledMysqlQueryPiece) {
 	mqpp.lock.Lock()
 	defer mqpp.lock.Unlock()
 
@@ -76,12 +77,12 @@ func (mqpp *mysqlQueryPiecePool) Enqueue(pmqp *PooledMysqlQueryPiece)  {
 	}
 }
 
-func (mqpp *mysqlQueryPiecePool) Dequeue() (pmqp *PooledMysqlQueryPiece)  {
+func (mqpp *mysqlQueryPiecePool) Dequeue() (pmqp *PooledMysqlQueryPiece) {
 	mqpp.lock.Lock()
 	defer mqpp.lock.Unlock()
 
 	select {
-	case pmqp = <- mqpp.queue:
+	case pmqp = <-mqpp.queue:
 		return
 
 	default:
