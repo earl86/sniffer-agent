@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
+	"github.com/earl86/sniffer-agent/model"
 	"github.com/pingcap/tidb/parser"
 	"github.com/pingcap/tidb/parser/ast"
 	"github.com/pingcap/tidb/parser/format"
@@ -24,7 +25,7 @@ func (f *FingerprintVisitor) Leave(n ast.Node) (node ast.Node, ok bool) {
 	return n, true
 }
 
-func processSQL(sql []byte) *string {
+func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQueryPiece {
 	p := parser.New()
 	stmt, err := p.ParseOneStmt(sql, "", "")
 	if err != nil {
@@ -41,5 +42,7 @@ func processSQL(sql []byte) *string {
 		return err.Error()
 	}
 	//fmt.Println(buf.String())
-	return &hack.String(buf.Bytes())
+	mqp.QuerySQLFinger = &hack.String(buf.Bytes())
+	return mqp
+
 }
