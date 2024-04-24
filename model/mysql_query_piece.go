@@ -17,6 +17,7 @@ type MysqlQueryPiece struct {
 	QuerySQL     *string `json:"sql"`
 	CostTimeInUS int64   `json:"cus"`
 	//CostTimeInMS int64   `json:"cms"`
+	QuerySQLFinger *string `json:"finger"`
 }
 
 func (mqp *MysqlQueryPiece) String() *string {
@@ -42,4 +43,8 @@ func (mqp *MysqlQueryPiece) GenerateJsonBytes() {
 
 func (mqp *MysqlQueryPiece) GetSQL() (str *string) {
 	return mqp.QuerySQL
+}
+
+func (mqp *MysqlQueryPiece) GetSQLFinger() (str *string) {
+	return mqp.QuerySQLFinger
 }

@@ -90,9 +90,16 @@
 			"Rev": "a0006b13c722f7f12368c00a3d3c2ae8a999a0c6"
 		},
 		{
+			"ImportPath": "github.com/pingcap/tidb/parser",
+			"Rev": "9815b4534e22d5db87ad38347546071d27c58431"
+		},
+		{
+			"ImportPath": "github.com/pingcap/tidb/types/parser_driver",
+			"Rev": "9815b4534e22d5db87ad38347546071d27c58431"
+		},
+		{
 			"ImportPath": "github.com/pingcap/tidb/util/hack",
-			"Comment": "v2.1.0-beta-226-g360ef5c",
-			"Rev": "360ef5cee790475e9d75cb349e1b47b0a7a4efee"
+			"Rev": "9815b4534e22d5db87ad38347546071d27c58431"
 		},
 		{
 			"ImportPath": "github.com/pires/go-proxyproto",
