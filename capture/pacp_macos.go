@@ -22,7 +22,7 @@ func initEthernetHandlerFromPacp() (pcapHandler *pcap.Handle) {
 	if snifferIp == "all" {
 		err = pcapHandler.SetBPFFilter(fmt.Sprintf("tcp and (port %d)", snifferPort))
 	} else {
-		err = pcapHandler.SetBPFFilter(fmt.Sprintf("tcp and (port %d) and (host %s)", snifferPort, snifferIp))
+		err = pcapHandler.SetBPFFilter(fmt.Sprintf("tcp and (port %d) and host %s", snifferPort, snifferIp))
 	}
 
 	if err != nil {
