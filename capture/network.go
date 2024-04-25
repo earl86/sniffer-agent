@@ -7,9 +7,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/earl86/sniffer-agent/communicator"
-	"github.com/earl86/sniffer-agent/model"
-	sd "github.com/earl86/sniffer-agent/session-dealer"
+	"sniffer-agent/communicator"
+	"sniffer-agent/model"
+	sd "sniffer-agent/session-dealer"
+
 	log "github.com/golang/glog"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"

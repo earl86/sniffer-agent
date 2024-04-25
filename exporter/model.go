@@ -3,7 +3,7 @@ package exporter
 import (
 	"flag"
 
-	"github.com/earl86/sniffer-agent/model"
+	"sniffer-agent/model"
 )
 
 var (

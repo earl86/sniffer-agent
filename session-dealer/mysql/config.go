@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/earl86/sniffer-agent/util"
+	"sniffer-agent/util"
 )
 
 var (

@@ -1,5 +1,4 @@
 {
-	"ImportPath": "github.com/earl86/sniffer-agent",
 	"GoVersion": "go1.12",
 	"GodepVersion": "v79",
 	"Packages": [

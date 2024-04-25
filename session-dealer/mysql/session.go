@@ -5,8 +5,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/earl86/sniffer-agent/communicator"
-	"github.com/earl86/sniffer-agent/model"
+	"sniffer-agent/communicator"
+	"sniffer-agent/model"
+
 	log "github.com/golang/glog"
 	"github.com/pingcap/tidb/util/hack"
 )

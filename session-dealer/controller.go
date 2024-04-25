@@ -1,8 +1,8 @@
 package session_dealer
 
 import (
-	"github.com/earl86/sniffer-agent/model"
-	"github.com/earl86/sniffer-agent/session-dealer/mysql"
+	"sniffer-agent/model"
+	"sniffer-agent/session-dealer/mysql"
 )
 
 func NewSession(sessionKey, clientIP *string, clientPort int, serverIP *string, serverPort int,

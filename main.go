@@ -4,11 +4,12 @@ import (
 	"flag"
 	"os"
 
-	"github.com/earl86/sniffer-agent/capture"
-	"github.com/earl86/sniffer-agent/communicator"
-	"github.com/earl86/sniffer-agent/exporter"
-	sd "github.com/earl86/sniffer-agent/session-dealer"
-	"github.com/earl86/sniffer-agent/session-dealer/mysql"
+	"sniffer-agent/capture"
+	"sniffer-agent/communicator"
+	"sniffer-agent/exporter"
+	sd "sniffer-agent/session-dealer"
+	"sniffer-agent/session-dealer/mysql"
+
 	log "github.com/golang/glog"
 )
 

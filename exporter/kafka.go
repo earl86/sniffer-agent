@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"strings"
 
+	"sniffer-agent/model"
+
 	"github.com/Shopify/sarama"
-	"github.com/earl86/sniffer-agent/model"
 	log "github.com/golang/glog"
 )
 

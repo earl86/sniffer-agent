@@ -3,7 +3,7 @@ package exporter
 import (
 	"fmt"
 
-	"github.com/earl86/sniffer-agent/model"
+	"sniffer-agent/model"
 )
 
 type cliExporter struct {

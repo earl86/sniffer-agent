@@ -4,7 +4,8 @@ import (
 	"math/rand"
 	"time"
 
-	sd "github.com/earl86/sniffer-agent/session-dealer"
+	sd "sniffer-agent/session-dealer"
+
 	log "github.com/golang/glog"
 )
 
