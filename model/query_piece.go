@@ -3,8 +3,9 @@ package model
 import (
 	"time"
 
+	"sniffer-agent/tidb/util/hack"
+
 	jsoniter "github.com/json-iterator/go"
-	"github.com/pingcap/tidb/util/hack"
 )
 
 var jsonIterator = jsoniter.ConfigCompatibleWithStandardLibrary

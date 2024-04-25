@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/pingcap/tidb/util/hack"
+	"sniffer-agent/tidb/util/hack"
 )
 
 // MysqlQueryPiece 查询信息

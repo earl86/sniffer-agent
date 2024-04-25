@@ -97,11 +97,6 @@
 			"Rev": "9815b4534e22d5db87ad38347546071d27c58431"
 		},
 		{
-			"ImportPath": "github.com/pingcap/tidb/util/hack",
-			"Comment": "v2.1.0-beta-226-g360ef5c",
-			"Rev": "360ef5cee790475e9d75cb349e1b47b0a7a4efee"
-		},
-		{
 			"ImportPath": "github.com/pires/go-proxyproto",
 			"Rev": "83d61d90241fdbce96130ef0cc4ce5e495a95bdf"
 		},

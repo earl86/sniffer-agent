@@ -7,9 +7,9 @@ import (
 
 	"sniffer-agent/communicator"
 	"sniffer-agent/model"
+	"sniffer-agent/tidb/util/hack"
 
 	log "github.com/golang/glog"
-	"github.com/pingcap/tidb/util/hack"
 )
 
 type MysqlSession struct {

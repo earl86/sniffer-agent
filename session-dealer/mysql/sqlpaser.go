@@ -5,12 +5,12 @@ import (
 	"fmt"
 
 	"sniffer-agent/model"
+	"sniffer-agent/tidb/util/hack"
 
 	"github.com/pingcap/tidb/parser"
 	"github.com/pingcap/tidb/parser/ast"
 	"github.com/pingcap/tidb/parser/format"
 	driver "github.com/pingcap/tidb/types/parser_driver"
-	"github.com/pingcap/tidb/util/hack"
 )
 
 type FingerprintVisitor struct{}
