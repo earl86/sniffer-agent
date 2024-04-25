@@ -13,7 +13,6 @@ type QueryPiece interface {
 	String() *string
 	Bytes() []byte
 	GetSQL() *string
-	GetSQLFinger() *string
 	NeedSyncSend() bool
 	Recovery()
 }
@@ -80,10 +79,6 @@ func (bqp *BaseQueryPiece) Bytes() (content []byte) {
 }
 
 func (bqp *BaseQueryPiece) GetSQL() *string {
-	return nil
-}
-
-func (bqp *BaseQueryPiece) GetSQLFinger() *string {
 	return nil
 }
 
