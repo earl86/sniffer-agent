@@ -248,7 +248,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		fmt.Println("aaaaaaaaaaaaa %s %s", userName, dbName)
 
 	} else {
-		if mqp.VisitUser == nil || mqp.VisitDB == nil {
+		if mqp == nil {
 			userName, dbName, err := parseAuthInfo(ms.cachedStmtBytes)
 			if err != nil {
 				log.Errorf("parse auth info failed <-- %s", err.Error())
