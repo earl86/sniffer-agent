@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"sniffer-agent/model"
-	"sniffer-agent/tidb/util/hack"
 
 	"github.com/pingcap/tidb/parser"
 	"github.com/pingcap/tidb/parser/ast"
@@ -26,7 +25,7 @@ func (f *FingerprintVisitor) Leave(n ast.Node) (node ast.Node, ok bool) {
 	return n, true
 }
 
-func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQueryPiece {
+func processSQL(mqp *model.PooledMysqlQueryPiece, sql string) *model.PooledMysqlQueryPiece {
 	p := parser.New()
 	stmt, err := p.ParseOneStmt(sql, "", "")
 	if err != nil {
@@ -42,8 +41,8 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 		fmt.Println("解析错误:" + err.Error())
 		return nil
 	}
-	//fmt.Println(buf.String())
-	mqp.QuerySQLFinger = &hack.String(buf.Bytes())
+	fmt.Println(buf.String())
+	//mqp.QuerySQLFinger = &hack.String(buf.Bytes())
 	return mqp
 
 }
