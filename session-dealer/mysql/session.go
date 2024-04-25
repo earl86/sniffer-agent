@@ -252,10 +252,10 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 			userName, dbName, err := parseAuthInfo(ms.cachedStmtBytes)
 			if err != nil {
 				log.Errorf("parse auth info failed <-- %s", err.Error())
-				return
+			} else {
+				ms.visitUser = &userName
+				ms.visitDB = &dbName
 			}
-			ms.visitUser = &userName
-			ms.visitDB = &dbName
 		}
 		switch ms.cachedStmtBytes[0] {
 		case ComInitDB:
