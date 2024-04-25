@@ -17,13 +17,19 @@ import (
 
 func initEthernetHandlerFromPacp() (pcapgoHandler *pcapgo.EthernetHandle) {
 	pcapgoHandler, err := pcapgo.NewEthernetHandle(DeviceName)
+
 	if err != nil {
 		panic(fmt.Sprintf("cannot open network interface %s <-- %s", DeviceName, err.Error()))
 	}
 
 	// set BPFFilter
-	pcapBPF, err := pcap.CompileBPFFilter(
-		layers.LinkTypeEthernet, 65535, fmt.Sprintf("tcp and (port %d)", snifferPort))
+	var filterrule string
+	if snifferIp == "all" {
+		filterrule = fmt.Sprintf("tcp and (port %d)", snifferPort)
+	} else {
+		filterrule = fmt.Sprintf("tcp and (port %d) and (dst host %s)", snifferPort, snifferIp)
+	}
+	pcapBPF, err := pcap.CompileBPFFilter(layers.LinkTypeEthernet, 65535, filterrule)
 	if err != nil {
 		panic(err.Error())
 	}
