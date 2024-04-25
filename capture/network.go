@@ -34,6 +34,7 @@ func init() {
 // networkCard is network device
 type networkCard struct {
 	name       string
+	listenIp   string
 	listenPort int
 	receiver   chan model.QueryPiece
 }
@@ -46,6 +47,7 @@ func NewNetworkCard() (nc *networkCard) {
 	// init device
 	return &networkCard{
 		name:       DeviceName,
+		listenIp:   snifferIp,
 		listenPort: snifferPort,
 		receiver:   make(chan model.QueryPiece, 100),
 	}
