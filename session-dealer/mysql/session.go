@@ -245,9 +245,18 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		}
 		ms.visitUser = &userName
 		ms.visitDB = &dbName
-		fmt.Println("aaaaaaaaaaaaa %s %s", &ms.visitUser, &ms.visitDB)
+		fmt.Println("aaaaaaaaaaaaa %s %s", userName, dbName)
 
 	} else {
+		if mqp.VisitUser == nil || mqp.visitDB == nil {
+			userName, dbName, err := parseAuthInfo(ms.cachedStmtBytes)
+			if err != nil {
+				log.Errorf("parse auth info failed <-- %s", err.Error())
+				return
+			}
+			ms.visitUser = &userName
+			ms.visitDB = &dbName
+		}
 		switch ms.cachedStmtBytes[0] {
 		case ComInitDB:
 			newDBName := string(ms.cachedStmtBytes[1:])
