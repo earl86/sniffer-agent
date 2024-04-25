@@ -31,7 +31,7 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 	stmt, err := p.ParseOneStmt(sql, "", "")
 	if err != nil {
 		fmt.Println("解析错误:" + err.Error())
-		return err.Error()
+		return nil
 	}
 	stmt.Accept(&FingerprintVisitor{})
 
@@ -40,7 +40,7 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 	err = stmt.Restore(restoreCtx)
 	if nil != err {
 		fmt.Println("解析错误:" + err.Error())
-		return err.Error()
+		return nil
 	}
 	//fmt.Println(buf.String())
 	mqp.QuerySQLFinger = &hack.String(buf.Bytes())
