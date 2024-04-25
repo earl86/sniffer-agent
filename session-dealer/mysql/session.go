@@ -302,7 +302,8 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 
 	}
 	fmt.Println(strictMode)
-	if strictMode && mqp != nil && mqp.VisitUser == nil {
+	// if strictMode && mqp != nil && mqp.VisitUser == nil {
+	if mqp != nil && mqp.VisitUser == nil {
 		fmt.Println("aaaaaaaaaaaaa")
 		user, db, err := querySessionInfo(ms.serverPort, mqp.SessionID)
 		if err != nil {
