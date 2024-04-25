@@ -20,12 +20,14 @@ import (
 var (
 	DeviceName  string
 	snifferPort int
+	snifferIp   string
 	// inParallel bool
 )
 
 func init() {
 	flag.StringVar(&DeviceName, "interface", "eth0", "network device name. Default is eth0")
 	flag.IntVar(&snifferPort, "port", 3306, "sniffer port. Default is 3306")
+	flag.StringVar(&snifferIp, "ip", "all", "sniffer ip. Default is all")
 	// flag.BoolVar(&inParallel, "in_parallel", false, "if capture and deal package in parallel. Default is false")
 }
 
