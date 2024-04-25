@@ -30,7 +30,7 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 	p := parser.New()
 	stmt, err := p.ParseOneStmt(string(sql), "", "")
 	if err != nil {
-		fmt.Println("解析错误:" + err.Error())
+		//fmt.Println("解析错误:" + err.Error())
 		return mqp
 	}
 	stmt.Accept(&FingerprintVisitor{})
@@ -39,7 +39,7 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 	restoreCtx := format.NewRestoreCtx(format.RestoreKeyWordUppercase|format.RestoreNameBackQuotes, buf)
 	err = stmt.Restore(restoreCtx)
 	if nil != err {
-		fmt.Println("解析错误:" + err.Error())
+		//fmt.Println("解析错误:" + err.Error())
 		return mqp
 	}
 	fmt.Println(buf.String())
