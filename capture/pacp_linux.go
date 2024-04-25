@@ -27,7 +27,7 @@ func initEthernetHandlerFromPacp() (pcapgoHandler *pcapgo.EthernetHandle) {
 	if snifferIp == "all" {
 		filterrule = fmt.Sprintf("tcp and (port %d)", snifferPort)
 	} else {
-		filterrule = fmt.Sprintf("tcp and (port %d) and (dst host %s)", snifferPort, snifferIp)
+		filterrule = fmt.Sprintf("tcp and (port %d) and (host %s)", snifferPort, snifferIp)
 	}
 	pcapBPF, err := pcap.CompileBPFFilter(layers.LinkTypeEthernet, 65535, filterrule)
 	if err != nil {
