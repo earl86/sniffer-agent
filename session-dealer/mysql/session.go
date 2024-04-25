@@ -245,7 +245,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		}
 		ms.visitUser = &userName
 		ms.visitDB = &dbName
-		fmt.Println("aaaaaaaaaaaaa %s %s", ms.visitUser, ms.visitDB)
+		fmt.Println("aaaaaaaaaaaaa %s %s", &ms.visitUser, &ms.visitDB)
 
 	} else {
 		switch ms.cachedStmtBytes[0] {
