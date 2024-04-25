@@ -51,7 +51,7 @@ func dealEachTCPIPPacket(dealTCPIPPacket func(tcpIPPkt *TCPIPPair)) {
 			continue
 		}
 		tcpPkt := tcpLayer.(*layers.TCP)
-		if (int(tcpPkt.SrcPort) != snifferPort && int(tcpPkt.DstPort) != snifferPort) {
+		if int(tcpPkt.SrcPort) != snifferPort && int(tcpPkt.DstPort) != snifferPort {
 			continue
 		}
 
@@ -67,6 +67,11 @@ func dealEachTCPIPPacket(dealTCPIPPacket func(tcpIPPkt *TCPIPPair)) {
 			{
 				srcIP = realIPLayer.SrcIP.String()
 				dstIP = realIPLayer.DstIP.String()
+			}
+		}
+		if snifferIp != "all" {
+			if dstIP != snifferIp {
+				continue
 			}
 		}
 

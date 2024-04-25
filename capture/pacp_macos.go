@@ -20,10 +20,8 @@ func initEthernetHandlerFromPacp() (pcapHandler *pcap.Handle) {
 		panic(fmt.Sprintf("cannot open network interface %s <-- %s", DeviceName, err.Error()))
 	}
 	if snifferIp == "all" {
-		fmt.Printf(snifferIp)
 		err = pcapHandler.SetBPFFilter(fmt.Sprintf("tcp and (port %d)", snifferPort))
 	} else {
-		fmt.Printf(snifferIp)
 		err = pcapHandler.SetBPFFilter(fmt.Sprintf("tcp and (port %d) and host %s", snifferPort, snifferIp))
 	}
 
