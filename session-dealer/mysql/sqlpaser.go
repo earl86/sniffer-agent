@@ -43,7 +43,7 @@ func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysql
 		return mqp
 	}
 	fmt.Println(buf.String())
-	querySQL := hack.String(buf)
+	querySQL := hack.String(buf.Bytes())
 	mqp.QuerySQLFinger = &querySQL
 	return mqp
 
