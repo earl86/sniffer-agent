@@ -245,6 +245,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		}
 		ms.visitUser = &userName
 		ms.visitDB = &dbName
+		fmt.Println("aaaaaaaaaaaaa %s %s", ms.visitUser, ms.visitDB)
 
 	} else {
 		switch ms.cachedStmtBytes[0] {
@@ -301,10 +302,9 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		}
 
 	}
-	fmt.Println(strictMode)
-	// if strictMode && mqp != nil && mqp.VisitUser == nil {
-	if mqp != nil && mqp.VisitUser == nil {
-		fmt.Println("aaaaaaaaaaaaa")
+	// fmt.Println(strictMode)
+	if strictMode && mqp != nil && mqp.VisitUser == nil {
+		// fmt.Println("aaaaaaaaaaaaa")
 		user, db, err := querySessionInfo(ms.serverPort, mqp.SessionID)
 		if err != nil {
 			log.Errorf("query user and db from mysql failed <-- %s", err.Error())
