@@ -22,9 +22,9 @@ func (f *FingerprintVisitor) Leave(n ast.Node) (node ast.Node, ok bool) {
 	return n, true
 }
 
-func paserSQL(sql string) *string {
+func paserSQL(sql *string) *string {
 	p := parser.New()
-	stmt, err := p.ParseOneStmt(sql, "", "")
+	stmt, err := p.ParseOneStmt(*sql, "", "")
 	if err != nil {
 		// fmt.Println("解析错误:" + err.Error())
 		return nil

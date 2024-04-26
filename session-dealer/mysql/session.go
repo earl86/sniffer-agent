@@ -277,7 +277,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 			copy(querySQLInBytes, ms.cachedStmtBytes[1:])
 			querySQL := hack.String(querySQLInBytes)
 			mqp.QuerySQL = &querySQL
-			mqp.QuerySQLFinger = paserSQL(querySQL)
+			mqp.QuerySQLFinger = paserSQL(&querySQL)
 			ms.cachedPrepareStmt[ms.prepareInfo.prepareStmtID] = querySQLInBytes
 			log.Infof("prepare statement %s, get id:%d", querySQL, ms.prepareInfo.prepareStmtID)
 
@@ -305,9 +305,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		}
 
 	}
-	// fmt.Println(strictMode)
 	if strictMode && mqp != nil && mqp.VisitUser == nil {
-		// fmt.Println("aaaaaaaaaaaaa")
 		user, db, err := querySessionInfo(ms.serverPort, mqp.SessionID)
 		if err != nil {
 			log.Errorf("query user and db from mysql failed <-- %s", err.Error())
