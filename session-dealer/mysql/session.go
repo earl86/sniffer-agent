@@ -253,7 +253,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 			querySQLInBytes = hack.Slice(useSQL)
 			mqp = ms.composeQueryPiece()
 			mqp.QuerySQL = &useSQL
-			mqp.QuerySQLFinger = paserSQL(useSQL)
+			mqp.QuerySQLFinger = paserSQL(&useSQL)
 			// update session database
 			ms.visitDB = &newDBName
 
@@ -262,14 +262,14 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 			dropSQL := fmt.Sprintf("drop database %s", dbName)
 			mqp = ms.composeQueryPiece()
 			mqp.QuerySQL = &dropSQL
-			mqp.QuerySQLFinger = paserSQL(dropSQL)
+			mqp.QuerySQLFinger = paserSQL(&dropSQL)
 
 		case ComCreateDB, ComQuery:
 			mqp = ms.composeQueryPiece()
 			querySQLInBytes = ms.cachedStmtBytes[1:]
 			querySQL := hack.String(querySQLInBytes)
 			mqp.QuerySQL = &querySQL
-			mqp.QuerySQLFinger = paserSQL(querySQL)
+			mqp.QuerySQLFinger = paserSQL(&querySQL)
 
 		case ComStmtPrepare:
 			mqp = ms.composeQueryPiece()
@@ -291,7 +291,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 			}
 			querySQL := hack.String(querySQLInBytes)
 			mqp.QuerySQL = &querySQL
-			mqp.QuerySQLFinger = paserSQL(querySQL)
+			mqp.QuerySQLFinger = paserSQL(&querySQL)
 
 			// log.Debugf("execute prepare statement:%d", prepareStmtID)
 
