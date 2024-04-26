@@ -3,9 +3,6 @@ package mysql
 import (
 	"bytes"
 
-	"sniffer-agent/model"
-	"sniffer-agent/tidb/util/hack"
-
 	"github.com/pingcap/tidb/parser"
 	"github.com/pingcap/tidb/parser/ast"
 	"github.com/pingcap/tidb/parser/format"
@@ -25,9 +22,9 @@ func (f *FingerprintVisitor) Leave(n ast.Node) (node ast.Node, ok bool) {
 	return n, true
 }
 
-func paserSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQueryPiece {
+func paserSQL(sql string) *string {
 	p := parser.New()
-	stmt, err := p.ParseOneStmt(string(sql), "", "")
+	stmt, err := p.ParseOneStmt(sql, "", "")
 	if err != nil {
 		// fmt.Println("解析错误:" + err.Error())
 		return nil
@@ -42,8 +39,6 @@ func paserSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQu
 		return nil
 	}
 	// fmt.Println(buf.String())
-	fingerSQL := hack.String(buf.Bytes())
-	mqp.QuerySQLFinger = &fingerSQL
-	return mqp
-
+	fingerSQL := buf.String()
+	return &fingerSQL
 }
