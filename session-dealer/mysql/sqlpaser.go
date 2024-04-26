@@ -30,7 +30,7 @@ func paserSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQu
 	stmt, err := p.ParseOneStmt(string(sql), "", "")
 	if err != nil {
 		// fmt.Println("解析错误:" + err.Error())
-		return mqp
+		return nil
 	}
 	stmt.Accept(&FingerprintVisitor{})
 
@@ -39,11 +39,11 @@ func paserSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQu
 	err = stmt.Restore(restoreCtx)
 	if nil != err {
 		// fmt.Println("解析错误:" + err.Error())
-		return mqp
+		return nil
 	}
 	// fmt.Println(buf.String())
-	querySQL := hack.String(buf.Bytes())
-	mqp.QuerySQLFinger = &querySQL
+	fingerSQL := hack.String(buf.Bytes())
+	mqp.QuerySQLFinger = &fingerSQL
 	return mqp
 
 }
