@@ -25,7 +25,7 @@ func (f *FingerprintVisitor) Leave(n ast.Node) (node ast.Node, ok bool) {
 	return n, true
 }
 
-func processSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQueryPiece {
+func paserSQL(mqp *model.PooledMysqlQueryPiece, sql []byte) *model.PooledMysqlQueryPiece {
 	p := parser.New()
 	stmt, err := p.ParseOneStmt(string(sql), "", "")
 	if err != nil {

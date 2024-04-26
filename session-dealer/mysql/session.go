@@ -317,12 +317,12 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		return nil
 	}
 
-	communicator.ReceiveExecTime(ms.stmtBeginTimeNano)
-
-	mqp = processSQL(mqp, querySQLInBytes)
+	mqp = paserSQL(mqp, querySQLInBytes)
 	if mqp == nil {
 		return nil
 	}
+
+	communicator.ReceiveExecTime(ms.stmtBeginTimeNano)
 	return mqp
 }
 
