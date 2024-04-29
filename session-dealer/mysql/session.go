@@ -268,13 +268,9 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		case ComCreateDB, ComQuery:
 			mqp = ms.composeQueryPiece()
 			querySQLInBytes = ms.cachedStmtBytes[1:]
-			fmt.Println(string(querySQLInBytes))
 			querySQL := hack.String(querySQLInBytes)
-			fmt.Println(querySQL)
 			mqp.QuerySQL = &querySQL
 			mqp.QuerySQLFinger = paserSQL(&querySQL)
-			fmt.Println(*mqp.QuerySQLFinger)
-			fmt.Println(*mqp.String())
 
 		case ComStmtPrepare:
 			mqp = ms.composeQueryPiece()
