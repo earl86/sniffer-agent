@@ -246,6 +246,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		ms.visitUser = &userName
 		ms.visitDB = &dbName
 	} else {
+		// fmt.Println(ms.cachedStmtBytes[0])
 		switch ms.cachedStmtBytes[0] {
 		case ComInitDB:
 			newDBName := string(ms.cachedStmtBytes[1:])
@@ -267,9 +268,13 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 		case ComCreateDB, ComQuery:
 			mqp = ms.composeQueryPiece()
 			querySQLInBytes = ms.cachedStmtBytes[1:]
+			fmt.Println(string(querySQLInBytes))
 			querySQL := hack.String(querySQLInBytes)
+			fmt.Println(querySQL)
 			mqp.QuerySQL = &querySQL
 			mqp.QuerySQLFinger = paserSQL(&querySQL)
+			fmt.Println(*mqp.QuerySQLFinger)
+			fmt.Println(*mqp.String())
 
 		case ComStmtPrepare:
 			mqp = ms.composeQueryPiece()
@@ -321,6 +326,10 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 	}
 
 	communicator.ReceiveExecTime(ms.stmtBeginTimeNano)
+	//fmt.Println("fffffffffffffffffff %s",*mqp.String())
+	if len(*mqp.String()) == 0 {
+		return nil
+	}
 	return mqp
 }
 

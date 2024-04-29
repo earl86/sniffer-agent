@@ -13,6 +13,7 @@ type FingerprintVisitor struct{}
 
 func (f *FingerprintVisitor) Enter(n ast.Node) (node ast.Node, skipChildren bool) {
 	if v, ok := n.(*driver.ValueExpr); ok {
+		//  v.Type.Charset = ""
 		v.SetValue([]byte("?"))
 	}
 	return n, false
