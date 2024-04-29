@@ -323,7 +323,7 @@ func (ms *MysqlSession) GenerateQueryPiece() (qp model.QueryPiece) {
 
 	communicator.ReceiveExecTime(ms.stmtBeginTimeNano)
 	//fmt.Println("fffffffffffffffffff %s",*mqp.String())
-	if len(*mqp.String()) == 0 {
+	if *mqp.String() == "" {
 		return nil
 	}
 	return mqp
